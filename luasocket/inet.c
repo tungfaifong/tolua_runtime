@@ -36,7 +36,7 @@ int inet_open(lua_State *L)
 {
     lua_pushstring(L, "dns");
     lua_newtable(L);
-    luasocket_setfuncs(L, func, 0);
+    luaL_setfuncs(L, func, 0);
     lua_settable(L, -3);
     return 0;
 }
@@ -253,7 +253,7 @@ int inet_meth_getpeername(lua_State *L, p_socket ps, int family)
         port, sizeof(port), NI_NUMERICHOST | NI_NUMERICSERV);
     if (err) {
         lua_pushnil(L);
-        lua_pushstring(L, gai_strerror(err));
+        lua_pushstring(L, LUA_GAI_STRERROR(err));
         return 2;
     }
     lua_pushstring(L, name);
@@ -286,7 +286,7 @@ int inet_meth_getsockname(lua_State *L, p_socket ps, int family)
 		name, INET6_ADDRSTRLEN, port, 6, NI_NUMERICHOST | NI_NUMERICSERV);
     if (err) {
         lua_pushnil(L);
-        lua_pushstring(L, gai_strerror(err));
+        lua_pushstring(L, LUA_GAI_STRERROR(err));
         return 2;
     }
     lua_pushstring(L, name);

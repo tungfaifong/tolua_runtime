@@ -124,6 +124,6 @@ int except_open(lua_State *L) {
     lua_newtable(L); /* metatable for wrapped exceptions */
     lua_pushboolean(L, 0);
     lua_setfield(L, -2, "__metatable");
-    luasocket_setfuncs(L, func, 1);
+    luaL_setfuncs(L, func, 1);
     return 0;
 }

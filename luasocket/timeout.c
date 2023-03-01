@@ -143,7 +143,7 @@ double timeout_gettime(void) {
 * Initializes module
 \*-------------------------------------------------------------------------*/
 int timeout_open(lua_State *L) {
-    luasocket_setfuncs(L, func, 0);
+    luaL_setfuncs(L, func, 0);
     return 0;
 }
 

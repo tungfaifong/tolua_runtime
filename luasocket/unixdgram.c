@@ -16,7 +16,7 @@
 
 #define UNIXDGRAM_DATAGRAMSIZE 8192
 
-// provide a SUN_LEN macro if sys/un.h doesn't (e.g. Android)
+/* provide a SUN_LEN macro if sys/un.h doesn't (e.g. Android) */
 #ifndef SUN_LEN
 #define SUN_LEN(ptr) \
   ((size_t) (((struct sockaddr_un *) 0)->sun_path)  \
@@ -94,7 +94,7 @@ int unixdgram_open(lua_State *L)
     auxiliar_add2group(L, "unixdgram{connected}",   "select{able}");
     auxiliar_add2group(L, "unixdgram{unconnected}", "select{able}");
 
-    luasocket_setfuncs(L, func, 0);
+    luaL_setfuncs(L, func, 0);
     return 0;
 }
 

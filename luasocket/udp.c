@@ -130,7 +130,7 @@ int udp_open(lua_State *L) {
     auxiliar_add2group(L, "udp{connected}",   "select{able}");
     auxiliar_add2group(L, "udp{unconnected}", "select{able}");
     /* define library functions */
-    luasocket_setfuncs(L, func, 0);
+    luaL_setfuncs(L, func, 0);
     /* export default UDP size */
     lua_pushliteral(L, "_DATAGRAMSIZE");
     lua_pushinteger(L, UDP_DATAGRAMSIZE);
@@ -191,7 +191,7 @@ static int meth_sendto(lua_State *L) {
     err = getaddrinfo(ip, port, &aihint, &ai);
 	if (err) {
         lua_pushnil(L);
-        lua_pushstring(L, gai_strerror(err));
+        lua_pushstring(L, LUA_GAI_STRERROR(err));
         return 2;
     }
 
@@ -290,7 +290,7 @@ static int meth_receivefrom(lua_State *L) {
         INET6_ADDRSTRLEN, portstr, 6, NI_NUMERICHOST | NI_NUMERICSERV);
 	if (err) {
         lua_pushnil(L);
-        lua_pushstring(L, gai_strerror(err));
+        lua_pushstring(L, LUA_GAI_STRERROR(err));
         if (wanted > sizeof(buf)) free(dgram);
         return 2;
     }
