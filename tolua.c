@@ -403,7 +403,7 @@ LUALIB_API int tolua_argerror(lua_State *L, int narg, const char *extramsg)
 
         if (narg == 0)  /* error is in the self argument itself? */
         {
-            return tolua_pusherror(L, "calling " LUA_QS " on bad self (%s)", ar.name, extramsg);
+            return tolua_pusherror(L, "calling '%s' on bad self (%s)", ar.name, extramsg);
         }
     }
 
@@ -412,7 +412,7 @@ LUALIB_API int tolua_argerror(lua_State *L, int narg, const char *extramsg)
         ar.name = "?";
     }    
 
-    return tolua_pusherror(L, "bad argument #%d to " LUA_QS " (%s)", narg, ar.name, extramsg);
+    return tolua_pusherror(L, "bad argument #%d to '%s' (%s)", narg, ar.name, extramsg);
 }
 
 LUALIB_API int tolua_error(lua_State *L, const char *msg)
@@ -2798,7 +2798,7 @@ LUALIB_API int luaL_getversion()
     return LUA_VERSION_NUM;
 }
 
-#if LUA_VERSION_NUM == 503
+#if LUA_VERSION_NUM >= 503
 
 #if !defined(LUA_COMPAT_MODULE)
 // LUALIB_API void luaL_register(lua_State*L, const char*libname, const luaL_Reg* l)
