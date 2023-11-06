@@ -4,7 +4,7 @@ mkdir -p window/x86_64
 luacdir="lua54"
 luapath=$luacdir
 lualibname="liblua"
-outpath="Plugins"
+outpath="Plugins54"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd $DIR/$luapath
