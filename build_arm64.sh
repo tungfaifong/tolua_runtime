@@ -51,7 +51,7 @@ case $luapath in
     $luacdir)        
         $NDK/ndk-build.cmd clean APP_ABI="armeabi-v7a,x86,arm64-v8a" APP_PLATFORM=android-$NDKABI NDK_PROJECT_PATH=$NDK_PROJECT_PATH
         $NDK/ndk-build.cmd APP_ABI="arm64-v8a" APP_PLATFORM=android-$NDKABI NDK_PROJECT_PATH=$NDK_PROJECT_PATH
-        cp obj/local/arm64-v8a/$lualibname.a ../../android53/jni/
+        cp obj/local/arm64-v8a/$lualibname.a ../../android54/jni/
         $NDK/ndk-build.cmd clean APP_ABI="armeabi-v7a,x86,arm64-v8a" APP_PLATFORM=android-$NDKABI NDK_PROJECT_PATH=$NDK_PROJECT_PATH
     ;;
     $luajitdir)        
